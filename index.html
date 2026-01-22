@@ -2,17 +2,10 @@
 <html lang="id">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
-  <title>Ryou Yamada Store - VPS Murah</title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet"/>
-  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Ryo Shol - Jualan Keren & Jangih</title>
   <style>
-    :root {
-      --blue: #5a9bd4;
-      --dark: #1e3a5f;
-      --light: #a8d1ff;
-      --yellow: #ffe066;
-    }
+    @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&family=Roboto+Mono:wght@400;700&display=swap');
 
     * {
       margin: 0;
@@ -20,367 +13,202 @@
       box-sizing: border-box;
     }
 
-    html, body {
-      height: 100%;
-      width: 100%;
-      overflow-x: hidden;
-    }
-
     body {
-      font-family: 'Poppins', sans-serif;
-      /* Pakai URL gambar anime Ryou Yamada untuk tes (ganti dengan bg.jpg kalau sudah yakin) */
-      background: url('https://files.catbox.moe/73j5h3.jpg') no-repeat center center fixed !important;
-      -webkit-background-size: cover !important;
-      -moz-background-size: cover !important;
-      -o-background-size: cover !important;
-      background-size: cover !important;
-      background-position: center !important;
-      background-attachment: fixed !important;
-      color: white;
+      font-family: 'Roboto Mono', monospace;
+      background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.8)), url('https://images8.alphacoders.com/129/1296002.jpg') no-repeat center center fixed;
+      background-size: cover;
+      color: #e0e0e0;
       min-height: 100vh;
-      padding: 10px 5px;
-      position: relative;
-    }
-
-    body::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: rgba(20, 40, 80, 0.68) !important; /* overlay gelap agar teks jelas */
-      z-index: -1;
+      padding: 20px;
     }
 
     header {
       text-align: center;
-      margin: 15px 0 35px;
+      margin-bottom: 40px;
+      text-shadow: 0 0 10px #00ffea;
     }
 
     h1 {
-      font-size: clamp(2.5rem, 10vw, 5rem);
-      color: var(--light);
-      text-shadow: 0 0 20px rgba(90,155,212,0.8);
-      margin-bottom: 8px;
+      font-family: 'Orbitron', sans-serif;
+      font-size: 3.5rem;
+      color: #00ffea;
+      letter-spacing: 5px;
+      animation: glow 2s infinite alternate;
     }
 
-    .subtitle {
-      font-size: clamp(1rem, 4vw, 1.4rem);
-      color: #b0d0ff;
+    @keyframes glow {
+      from { text-shadow: 0 0 10px #00ffea, 0 0 20px #00ffea; }
+      to { text-shadow: 0 0 20px #ff00aa, 0 0 30px #ff00aa; }
     }
 
     .container {
-      max-width: 1200px;
+      max-width: 900px;
       margin: 0 auto;
     }
 
-    .section h2 {
-      color: var(--light);
-      text-align: center;
-      margin: 40px 0 25px;
-      font-size: clamp(1.6rem, 5vw, 2rem);
-      text-shadow: 0 0 10px rgba(90,155,212,0.6);
-    }
-
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 18px;
-      justify-content: center;
-      padding: 0 10px;
-    }
-
-    .card {
-      background: rgba(90, 155, 212, 0.28);
-      border: 3px solid var(--blue);
-      border-radius: 28px;
-      padding: 20px 16px;
-      text-align: center;
-      backdrop-filter: blur(6px);
-      transition: 0.3s;
-      min-height: 170px;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      max-width: 320px;
-      width: 100%;
-    }
-
-    .card:hover {
-      transform: scale(1.04);
-      border-color: white;
-      box-shadow: 0 12px 35px rgba(90,155,212,0.45);
-    }
-
-    .spec {
-      font-size: 1.08rem;
-      line-height: 1.5;
-      margin-bottom: 12px;
-      color: white;
-      white-space: nowrap;
-    }
-
-    .price {
-      font-size: 1.5rem;
-      font-weight: 700;
-      color: var(--yellow);
-      margin: 10px 0 16px;
-      white-space: nowrap;
-    }
-
-    .buy {
-      background: var(--blue);
-      color: white;
-      border: none;
-      padding: 12px 28px;
-      font-size: 1rem;
-      font-weight: 600;
-      border-radius: 50px;
-      cursor: pointer;
-      transition: 0.3s;
-      margin-top: auto;
-      width: 100%;
-    }
-
-    .buy:hover {
-      background: #3b82f6;
-      transform: scale(1.08);
-    }
-
-    /* Overlay QR */
-    .overlay {
-      display: none;
-      position: fixed;
-      inset: 0;
-      background: rgba(0,0,0,0.82);
-      z-index: 9999;
-      align-items: center;
-      justify-content: center;
-      padding: 15px;
-    }
-
-    .qr-modal {
-      background: rgba(30, 58, 138, 0.94);
-      border: 4px solid var(--light);
-      border-radius: 24px;
-      padding: 24px 20px;
-      max-width: 360px;
-      width: 100%;
-      text-align: center;
-      position: relative;
-      box-shadow: 0 0 60px rgba(90,155,212,0.7);
-    }
-
-    .close {
-      position: absolute;
-      top: 8px;
-      right: 14px;
-      font-size: 2.4rem;
-      color: white;
-      background: none;
-      border: none;
-      cursor: pointer;
-    }
-
-    .qr {
-      width: 100%;
-      max-width: 220px;
+    .category {
+      background: rgba(20, 20, 40, 0.8);
+      border: 2px solid #00ffea;
       border-radius: 12px;
-      margin: 15px auto;
+      margin: 20px 0;
+      padding: 15px;
+      cursor: pointer;
+      transition: all 0.4s;
+      box-shadow: 0 0 15px rgba(0, 255, 234, 0.3);
     }
 
-    .info {
+    .category:hover {
+      transform: scale(1.03);
+      box-shadow: 0 0 30px rgba(0, 255, 234, 0.6);
+    }
+
+    .category h2 {
+      color: #00ffea;
+      font-size: 1.8rem;
+    }
+
+    .products {
+      display: none;
+      margin-top: 15px;
+      padding: 15px;
+      background: rgba(10, 10, 20, 0.9);
+      border-radius: 10px;
+      border: 1px solid #444;
+    }
+
+    .products.active {
+      display: block;
+    }
+
+    ul {
+      list-style: none;
+    }
+
+    li {
       margin: 12px 0;
       font-size: 1.1rem;
+      padding: 10px;
+      background: rgba(0, 255, 234, 0.1);
+      border-radius: 8px;
+      border-left: 5px solid #00ffea;
     }
 
-    .info div { margin: 5px 0; }
-
-    .send {
-      width: 100%;
-      padding: 13px;
-      margin: 10px 0;
-      border: none;
-      border-radius: 50px;
-      font-size: 1.05rem;
-      font-weight: 600;
-      cursor: pointer;
+    .payment-info {
+      margin-top: 50px;
+      padding: 25px;
+      background: rgba(30, 30, 50, 0.8);
+      border-radius: 15px;
+      border: 2px dashed #ff00aa;
+      text-align: center;
     }
 
-    .wa { background: #25D366; color: white; }
-    .tg { background: #0088cc; color: white; }
-
-    @media (max-width: 600px) {
-      .grid { grid-template-columns: repeat(2, 1fr); gap: 14px; }
-      .card { padding: 16px 12px; min-height: 150px; }
-      .spec { font-size: 1rem; }
-      .price { font-size: 1.35rem; }
-      .buy { padding: 11px 22px; font-size: 0.95rem; }
+    .payment-info h3 {
+      color: #ff00aa;
+      margin-bottom: 15px;
     }
 
-    @media (max-width: 380px) {
-      .grid { grid-template-columns: 1fr; }
-      .card { max-width: 90%; margin: 0 auto; }
+    a {
+      color: #00ffea;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    a:hover {
+      color: #ff00aa;
+    }
+
+    footer {
+      text-align: center;
+      margin-top: 60px;
+      color: #888;
+      font-size: 0.9rem;
     }
   </style>
 </head>
 <body>
 
-  <header>
-    <h1>RyouYamada</h1>
-    <p class="subtitle">VPS Murah • Low / Medium / High Spec</p>
-  </header>
+  <div class="container">
+    <header>
+      <h1>RYO SHOL</h1>
+      <p style="font-size: 1.3rem; color: #aaa;">Jualan Keren & Jangih - Powered by Ryo Yamada Vibes</p>
+    </header>
 
-  <main class="container">
-
-    <section class="section">
-      <h2>VPS SPEK LOW</h2>
-      <div class="grid">
-        <div class="card">
-          <div class="spec">2GB RAM • 2 CPU</div>
-          <div class="price">Rp 10.000</div>
-          <button class="buy" data-category="Low" data-spec="2GB RAM 2 CPU" data-price="10000">BUY NOW</button>
-        </div>
-        <div class="card">
-          <div class="spec">4GB RAM • 2 CPU</div>
-          <div class="price">Rp 15.000</div>
-          <button class="buy" data-category="Low" data-spec="4GB RAM 2 CPU" data-price="15000">BUY NOW</button>
-        </div>
-        <div class="card">
-          <div class="spec">8GB RAM • 4 CPU</div>
-          <div class="price">Rp 20.000</div>
-          <button class="buy" data-category="Low" data-spec="8GB RAM 4 CPU" data-price="20000">BUY NOW</button>
-        </div>
-        <div class="card">
-          <div class="spec">16GB RAM • 4 CPU</div>
-          <div class="price">Rp 25.000</div>
-          <button class="buy" data-category="Low" data-spec="16GB RAM 4 CPU" data-price="25000">BUY NOW</button>
-        </div>
-        <div class="card">
-          <div class="spec">16GB RAM • 8 CPU</div>
-          <div class="price">Rp 30.000</div>
-          <button class="buy" data-category="Low" data-spec="16GB RAM 8 CPU" data-price="30000">BUY NOW</button>
-        </div>
+    <div class="category" onclick="toggleProducts('nokos')">
+      <h2>[ NOKOS ]</h2>
+      <div id="nokos" class="products">
+        <ul>
+          <li>INDONESIA</li>
+          <li>ARAB</li>
+          <li>US</li>
+          <li>THAILAND</li>
+        </ul>
       </div>
-    </section>
-
-    <section class="section">
-      <h2>VPS SPEK MEDIUM</h2>
-      <div class="grid">
-        <div class="card">
-          <div class="spec">2GB RAM • 2 CPU</div>
-          <div class="price">Rp 12.000</div>
-          <button class="buy" data-category="Medium" data-spec="2GB RAM 2 CPU" data-price="12000">BUY NOW</button>
-        </div>
-        <div class="card">
-          <div class="spec">4GB RAM • 2 CPU</div>
-          <div class="price">Rp 17.000</div>
-          <button class="buy" data-category="Medium" data-spec="4GB RAM 2 CPU" data-price="17000">BUY NOW</button>
-        </div>
-        <div class="card">
-          <div class="spec">8GB RAM • 4 CPU</div>
-          <div class="price">Rp 22.000</div>
-          <button class="buy" data-category="Medium" data-spec="8GB RAM 4 CPU" data-price="22000">BUY NOW</button>
-        </div>
-        <div class="card">
-          <div class="spec">16GB RAM • 4 CPU</div>
-          <div class="price">Rp 27.000</div>
-          <button class="buy" data-category="Medium" data-spec="16GB RAM 4 CPU" data-price="27000">BUY NOW</button>
-        </div>
-        <div class="card">
-          <div class="spec">16GB RAM • 8 CPU</div>
-          <div class="price">Rp 32.000</div>
-          <button class="buy" data-category="Medium" data-spec="16GB RAM 8 CPU" data-price="32000">BUY NOW</button>
-        </div>
-      </div>
-    </section>
-
-    <section class="section">
-      <h2>VPS SPEK HIGH</h2>
-      <div class="grid">
-        <div class="card">
-          <div class="spec">2GB RAM • 2 CPU</div>
-          <div class="price">Rp 16.000</div>
-          <button class="buy" data-category="High" data-spec="2GB RAM 2 CPU" data-price="16000">BUY NOW</button>
-        </div>
-        <div class="card">
-          <div class="spec">4GB RAM • 2 CPU</div>
-          <div class="price">Rp 22.000</div>
-          <button class="buy" data-category="High" data-spec="4GB RAM 2 CPU" data-price="22000">BUY NOW</button>
-        </div>
-        <div class="card">
-          <div class="spec">8GB RAM • 4 CPU</div>
-          <div class="price">Rp 24.000</div>
-          <button class="buy" data-category="High" data-spec="8GB RAM 4 CPU" data-price="24000">BUY NOW</button>
-        </div>
-        <div class="card">
-          <div class="spec">16GB RAM • 4 CPU</div>
-          <div class="price">Rp 35.000</div>
-          <button class="buy" data-category="High" data-spec="16GB RAM 4 CPU" data-price="35000">BUY NOW</button>
-        </div>
-        <div class="card">
-          <div class="spec">16GB RAM • 8 CPU</div>
-          <div class="price">Rp 40.000</div>
-          <button class="buy" data-category="High" data-spec="16GB RAM 8 CPU" data-price="40000">BUY NOW</button>
-        </div>
-      </div>
-    </section>
-
-  </main>
-
-  <!-- QR Overlay -->
-  <div class="overlay" id="overlay">
-    <div class="qr-modal">
-      <button class="close" id="close">×</button>
-      <img src="qr.jpg" alt="QRIS" class="qr">
-      <div class="info">
-        <div id="paket-title"></div>
-        <div id="paket-spec"></div>
-        <div id="paket-price"></div>
-      </div>
-      <button class="send wa" id="wa">WhatsApp</button>
-      <button class="send tg" id="tg">Telegram</button>
     </div>
+
+    <div class="category" onclick="toggleProducts('vps')">
+      <h2>[ VPS DO ]</h2>
+      <div id="vps" class="products">
+        <h3 style="color: #ffcc00; margin: 15px 0;">HIGH QUALITY</h3>
+        <ul>
+          <li>Ram 4 Core 2 → 40.000 IDR</li>
+          <li>Ram 8 Core 4 → 50.000 IDR</li>
+          <li>Ram 16 Core 2 → 60.000 IDR</li>
+          <li>Ram 16 Core 4 → 70.000 IDR</li>
+          <li>Ram 16 Core 8 → 85.000 IDR</li>
+        </ul>
+        <h3 style="color: #ff00aa; margin: 20px 0 15px;">SUPER QUALITY</h3>
+        <ul>
+          <li>Ram 4 Core 2 → 85.000 IDR</li>
+          <li>Ram 8 Core 4 → 90.000 IDR</li>
+          <li>Ram 16 Core 2 → 100.000 IDR</li>
+          <li>Ram 16 Core 4 → 130.000 IDR</li>
+          <li>Ram 16 Core 8 → 150.000 IDR</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="category" onclick="toggleProducts('mic')">
+      <h2>[ ON MIC ROBLOX ]</h2>
+      <div id="mic" class="products">
+        <ul>
+          <li>On Mic 50K</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="category" onclick="toggleProducts('domain')">
+      <h2>[ Domain / SubDomain ]</h2>
+      <div id="domain" class="products">
+        <ul>
+          <li>.biz.id → 15.000 IDR</li>
+          <li>.online → 30.000 IDR</li>
+          <li>.my.id → 45.000 IDR</li>
+          <li>Subdomain → 10K</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="payment-info">
+      <h3>Cara Pembayaran</h3>
+      <p>Kirim pembayaran via <strong>QRIS</strong> atau transfer, lalu kirim bukti + produk yang dipilih ke:</p>
+      <p style="font-size: 1.4rem; margin: 20px 0;">
+        <strong>WA:</strong> <a href="https://wa.me/6285117115381">085117115381</a> (langsung chat ya!)<br>
+        <strong>Tele:</strong> <a href="https://t.me/ApinnSetecuu">@ApinnSetecuu</a>
+      </p>
+      <p>Kirim format: <br><em>"Produk: [nama produk] - Bukti transfer"</em></p>
+      <p>Fast response & proses cepat! 🚀</p>
+    </div>
+
+    <footer>
+      © 2026 Ryo Shol - Stay Cool & Jangih
+    </footer>
   </div>
 
   <script>
-    const overlay = document.getElementById('overlay');
-    const closeBtn = document.getElementById('close');
-    const paketTitle = document.getElementById('paket-title');
-    const paketSpec = document.getElementById('paket-spec');
-    const paketPrice = document.getElementById('paket-price');
-
-    let current = { category: '', spec: '', price: 0 };
-
-    document.querySelectorAll('.buy').forEach(btn => {
-      btn.addEventListener('click', () => {
-        current.category = btn.dataset.category.toUpperCase();
-        current.spec = btn.dataset.spec;
-        current.price = btn.dataset.price;
-
-        paketTitle.textContent = `VPS ${current.category} SPEK`;
-        paketSpec.textContent = current.spec;
-        paketPrice.textContent = `Rp ${Number(current.price).toLocaleString('id-ID')}`;
-
-        overlay.style.display = 'flex';
-      });
-    });
-
-    closeBtn.addEventListener('click', () => overlay.style.display = 'none');
-
-    overlay.addEventListener('click', e => {
-      if (e.target === overlay) overlay.style.display = 'none';
-    });
-
-    document.getElementById('wa').addEventListener('click', () => {
-      const msg = `Hallo min aku beli vps!!\n\nSpek \( {current.category}\n \){current.spec}\nRp: ${Number(current.price).toLocaleString('id-ID')}\n\nnote: kirim juga bukti pembayaran nya`;
-      window.open(`https://wa.me/6285117115381?text=${encodeURIComponent(msg)}`, '_blank');
-      overlay.style.display = 'none';
-    });
-
-    document.getElementById('tg').addEventListener('click', () => {
-      const msg = `Hallo min aku beli vps!!\n\nSpek \( {current.category}\n \){current.spec}\nRp: ${Number(current.price).toLocaleString('id-ID')}\n\nnote: kirim juga bukti pembayaran nya`;
-      window.open(`https://t.me/ApinnSetecuu?text=${encodeURIComponent(msg)}`, '_blank');
-      overlay.style.display = 'none';
-    });
+    function toggleProducts(id) {
+      const el = document.getElementById(id);
+      el.classList.toggle('active');
+    }
   </script>
 
 </body>
