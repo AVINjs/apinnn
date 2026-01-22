@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Ryo Shop</title>
+  <title>Ryo Shop - Keren & Jangih</title>
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&family=Roboto+Mono:wght@400;700&display=swap');
 
@@ -28,7 +28,7 @@
       from { text-shadow: 0 0 15px #00ffea, 0 0 30px #00ffea; }
       to { text-shadow: 0 0 30px #ff00aa, 0 0 50px #ff00aa; }
     }
-    .container { max-width: 1000px; margin:0 auto; }
+    .container { max-width: 1000px; margin:0 auto; position:relative; }
     .category {
       background: rgba(20,20,40,0.85);
       border: 2px solid #00ffea;
@@ -64,14 +64,37 @@
     li:hover { background:rgba(0,255,234,0.2); transform:translateX(5px); }
     #payment {
       display:none;
-      margin-top:30px;
-      padding:25px;
-      background:rgba(30,30,50,0.9);
-      border-radius:15px;
+      position: relative;
+      margin:40px auto 0;
+      padding:35px 30px;
+      max-width: 500px;
+      background:rgba(30,30,50,0.95);
+      border-radius:18px;
       border:3px dashed #ff00aa;
       text-align:center;
+      box-shadow:0 0 40px rgba(255,0,170,0.5);
     }
     #payment.active { display:block; }
+    #close-btn {
+      position: absolute;
+      top: 12px;
+      right: 15px;
+      font-size: 2.2rem;
+      color: #ff00aa;
+      cursor: pointer;
+      background: rgba(0,0,0,0.4);
+      width: 40px;
+      height: 40px;
+      line-height: 40px;
+      text-align: center;
+      border-radius: 50%;
+      transition: all 0.3s;
+    }
+    #close-btn:hover {
+      background: #ff00aa;
+      color: #fff;
+      transform: rotate(90deg);
+    }
     #payment img {
       max-width:300px;
       margin:25px auto;
@@ -79,11 +102,28 @@
       border-radius:15px;
       box-shadow:0 0 25px rgba(255,0,170,0.6);
     }
-    #payment h3 { color:#ff00aa; font-size:1.8rem; margin-bottom:15px; }
-    #selected-product { font-size:1.4rem; color:#00ffea; margin:15px 0; font-weight:bold; }
+    #payment h3 { color:#ff00aa; font-size:1.9rem; margin-bottom:15px; }
+    #selected-product { font-size:1.5rem; color:#00ffea; margin:20px 0; font-weight:bold; line-height:1.4; }
+    .btn-wa {
+      display:inline-block;
+      background: #ff00aa;
+      color: #fff;
+      padding:15px 35px;
+      font-size:1.3rem;
+      border-radius:12px;
+      text-decoration:none;
+      margin:25px 0 15px;
+      box-shadow:0 0 20px rgba(255,0,170,0.7);
+      transition: all 0.4s;
+    }
+    .btn-wa:hover {
+      transform:scale(1.08);
+      box-shadow:0 0 35px rgba(255,0,170,1);
+      background: #ff3399;
+    }
     a { color:#00ffea; text-decoration:none; font-weight:bold; }
     a:hover { color:#ff00aa; }
-    footer { text-align:center; margin-top:70px; color:#777; font-size:1rem; }
+    footer { text-align:center; margin-top:80px; color:#777; font-size:1rem; }
   </style>
 </head>
 <body>
@@ -91,9 +131,10 @@
   <div class="container">
     <header>
       <h1>RYO SHOP</h1>
-      <p style="font-size:1.5rem; color:#bbb;">Ryo Yamada Shop 2026</p>
+      <p style="font-size:1.5rem; color:#bbb;">Jualan Keren & Jangih - Ryo Yamada Mode ON</p>
     </header>
 
+    <!-- Kategori Nokos -->
     <div class="category" onclick="toggle('nokos')">
       <h2>[ NOKOS ]</h2>
       <div id="nokos" class="products">
@@ -106,6 +147,7 @@
       </div>
     </div>
 
+    <!-- Kategori VPS DO -->
     <div class="category" onclick="toggle('vps')">
       <h2>[ VPS DO ]</h2>
       <div id="vps" class="products">
@@ -128,6 +170,7 @@
       </div>
     </div>
 
+    <!-- Kategori ON MIC ROBLOX -->
     <div class="category" onclick="toggle('mic')">
       <h2>[ ON MIC ROBLOX ]</h2>
       <div id="mic" class="products">
@@ -137,6 +180,7 @@
       </div>
     </div>
 
+    <!-- Kategori Domain / SubDomain -->
     <div class="category" onclick="toggle('domain')">
       <h2>[ Domain / SubDomain ]</h2>
       <div id="domain" class="products">
@@ -149,38 +193,57 @@
       </div>
     </div>
 
+    <!-- Section Pembayaran -->
     <div id="payment">
+      <div id="close-btn" onclick="closePayment()">✕</div>
       <h3>Pembayaran via QRIS</h3>
-      <img src="qr.jpg" alt="QRIS Pembayaran"> <!-- GANTI SRC INI DENGAN LINK QRIS ASLI KAMU, contoh: https://i.imgur.com/ABC123.jpg -->
+      <img src="qr.jpg" alt="QRIS Pembayaran"> <!-- GANTI DENGAN LINK QRIS ASLI KAMU -->
       <div id="selected-product"></div>
-      <div class="payment-info">
-        <p>Kirim bukti transfer ke:</p>
-        <p style="font-size:1.6rem; margin:25px 0;">
+      <a id="btn-kirim" href="#" class="btn-wa">Kirim Bukti ke WA</a>
+      <div class="payment-info" style="margin-top:25px; font-size:1.1rem;">
+        <p>Atau kirim manual ke:</p>
+        <p style="margin:15px 0;">
           <strong>WA:</strong> <a href="https://wa.me/6285117115381">085117115381</a><br>
           <strong>Tele:</strong> <a href="https://t.me/ApinnSetecuu">@ApinnSetecuu</a>
         </p>
-        <p>Format chat:<br><em>"Produk: [nama di atas] - Harga: [harga di atas] - Sudah transfer via QRIS"</em></p>
-        <p>Konfirmasi cepat, proses langsung! 🔥</p>
       </div>
     </div>
 
     <footer>
-      © 2026 Ryo Shop • Ryo Yamada 
+      © 2026 Ryo Shop • Ryo Yamada Aesthetic Forever
     </footer>
   </div>
 
   <script>
+    let currentProduct = '';
+    let currentPrice = '';
+
     function toggle(id) {
       const el = document.getElementById(id);
       el.classList.toggle('active');
     }
 
     function showPayment(productName, price) {
+      currentProduct = productName;
+      currentPrice = price;
+
       const payment = document.getElementById('payment');
       const selected = document.getElementById('selected-product');
+      const btn = document.getElementById('btn-kirim');
+
       selected.innerHTML = `Produk: ${productName}<br>Harga: ${price}`;
+
+      const message = `Halo, mau beli: ${productName}\nHarga: ${price}\nSudah transfer via QRIS.\nBukti transfer terlampir ya! 🚀`;
+      const encodedMsg = encodeURIComponent(message);
+      btn.href = `https://wa.me/6285117115381?text=${encodedMsg}`;
+
       payment.classList.add('active');
       payment.scrollIntoView({ behavior: 'smooth' });
+    }
+
+    function closePayment() {
+      const payment = document.getElementById('payment');
+      payment.classList.remove('active');
     }
   </script>
 
