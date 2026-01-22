@@ -10,73 +10,80 @@
     * { margin:0; padding:0; box-sizing:border-box; }
     body {
       font-family: 'Roboto Mono', monospace;
-      background: linear-gradient(rgba(0,0,0,0.75), rgba(0,0,0,0.85)), url('https://images6.alphacoders.com/129/1299664.jpg') no-repeat center center fixed;
+      background: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.9)), url('https://images2.alphacoders.com/129/1295674.jpg') no-repeat center center fixed;
       background-size: cover;
       color: #e0e0e0;
       min-height: 100vh;
       padding: 20px;
     }
-    header { text-align:center; margin-bottom:40px; text-shadow:0 0 10px #00ffea; }
+    header { text-align:center; margin-bottom:40px; text-shadow:0 0 12px #00ffea; }
     h1 {
       font-family: 'Orbitron', sans-serif;
-      font-size: 3.8rem;
+      font-size: 4rem;
       color: #00ffea;
-      letter-spacing: 6px;
-      animation: glow 2.5s infinite alternate;
+      letter-spacing: 7px;
+      animation: glow 3s infinite alternate;
     }
     @keyframes glow {
-      from { text-shadow: 0 0 10px #00ffea, 0 0 25px #00ffea; }
-      to { text-shadow: 0 0 25px #ff00aa, 0 0 40px #ff00aa; }
+      from { text-shadow: 0 0 15px #00ffea, 0 0 30px #00ffea; }
+      to { text-shadow: 0 0 30px #ff00aa, 0 0 50px #ff00aa; }
     }
-    .container { max-width: 950px; margin:0 auto; }
+    .container { max-width: 1000px; margin:0 auto; }
     .category {
-      background: rgba(20,20,40,0.8);
+      background: rgba(20,20,40,0.85);
       border: 2px solid #00ffea;
-      border-radius: 12px;
+      border-radius: 14px;
       margin:20px 0;
-      padding:15px;
+      padding:18px;
       cursor:pointer;
       transition:all 0.4s;
-      box-shadow:0 0 15px rgba(0,255,234,0.4);
+      box-shadow:0 0 20px rgba(0,255,234,0.5);
     }
-    .category:hover { transform:scale(1.03); box-shadow:0 0 35px rgba(0,255,234,0.7); }
-    .category h2 { color:#00ffea; font-size:1.9rem; }
-    .products, .payment-section {
+    .category:hover { transform:scale(1.04); box-shadow:0 0 40px rgba(0,255,234,0.8); }
+    .category h2 { color:#00ffea; font-size:2rem; }
+    .products {
       display:none;
       margin-top:15px;
       padding:20px;
-      background:rgba(10,10,25,0.9);
-      border-radius:10px;
-      border:1px solid #444;
+      background:rgba(10,10,25,0.95);
+      border-radius:12px;
+      border:1px solid #555;
     }
-    .products.active, .payment-section.active { display:block; }
+    .products.active { display:block; }
     ul { list-style:none; }
     li {
-      margin:12px 0;
-      font-size:1.15rem;
-      padding:12px;
-      background:rgba(0,255,234,0.08);
-      border-radius:8px;
-      border-left:6px solid #00ffea;
+      margin:14px 0;
+      font-size:1.2rem;
+      padding:14px;
+      background:rgba(0,255,234,0.1);
+      border-radius:10px;
+      border-left:7px solid #00ffea;
       cursor:pointer;
       transition:0.3s;
     }
-    li:hover { background:rgba(0,255,234,0.15); }
-    .payment-section {
+    li:hover { background:rgba(0,255,234,0.2); transform:translateX(5px); }
+    #payment {
+      display:none;
+      margin-top:30px;
+      padding:25px;
+      background:rgba(30,30,50,0.9);
+      border-radius:15px;
+      border:3px dashed #ff00aa;
       text-align:center;
-      border:2px dashed #ff00aa;
     }
-    .payment-section img {
-      max-width:280px;
-      margin:20px auto;
+    #payment.active { display:block; }
+    #payment img {
+      max-width:300px;
+      margin:25px auto;
       display:block;
-      border-radius:12px;
-      box-shadow:0 0 20px rgba(255,0,170,0.5);
+      border-radius:15px;
+      box-shadow:0 0 25px rgba(255,0,170,0.6);
     }
-    .payment-info h3 { color:#ff00aa; margin-bottom:15px; font-size:1.6rem; }
+    #payment h3 { color:#ff00aa; font-size:1.8rem; margin-bottom:15px; }
+    #selected-product { font-size:1.4rem; color:#00ffea; margin:15px 0; font-weight:bold; }
     a { color:#00ffea; text-decoration:none; font-weight:bold; }
     a:hover { color:#ff00aa; }
-    footer { text-align:center; margin-top:60px; color:#888; font-size:0.95rem; }
+    footer { text-align:center; margin-top:70px; color:#777; font-size:1rem; }
   </style>
 </head>
 <body>
@@ -84,17 +91,17 @@
   <div class="container">
     <header>
       <h1>RYO SHOP</h1>
-      <p style="font-size:1.4rem; color:#aaa;">Ryo Shop - 2026</p>
+      <p style="font-size:1.5rem; color:#bbb;">Ryo Yamada Shop 2026</p>
     </header>
 
     <div class="category" onclick="toggle('nokos')">
       <h2>[ NOKOS ]</h2>
       <div id="nokos" class="products">
         <ul>
-          <li onclick="showPayment('Indonesia Nokos - 10K')">INDONESIA → 10K</li>
-          <li onclick="showPayment('Arab Nokos - 20K')">ARAB → 20K</li>
-          <li onclick="showPayment('US Nokos - 35K')">US → 35K</li>
-          <li onclick="showPayment('Thailand Nokos - 40K')">THAILAND → 40K</li>
+          <li onclick="showPayment('Indonesia Nokos', '10K')">INDONESIA → 10K</li>
+          <li onclick="showPayment('Arab Nokos', '20K')">ARAB → 20K</li>
+          <li onclick="showPayment('US Nokos', '35K')">US → 35K</li>
+          <li onclick="showPayment('Thailand Nokos', '40K')">THAILAND → 40K</li>
         </ul>
       </div>
     </div>
@@ -102,21 +109,21 @@
     <div class="category" onclick="toggle('vps')">
       <h2>[ VPS DO ]</h2>
       <div id="vps" class="products">
-        <h3 style="color:#ffcc00; margin:15px 0;">HIGH QUALITY</h3>
+        <h3 style="color:#ffcc00; margin:20px 0 10px;">HIGH QUALITY</h3>
         <ul>
-          <li>Ram 4 Core 2 → 40.000 IDR</li>
-          <li>Ram 8 Core 4 → 50.000 IDR</li>
-          <li>Ram 16 Core 2 → 60.000 IDR</li>
-          <li>Ram 16 Core 4 → 70.000 IDR</li>
-          <li>Ram 16 Core 8 → 85.000 IDR</li>
+          <li onclick="showPayment('VPS High Quality - Ram 4 Core 2', '40.000 IDR')">Ram 4 Core 2 → 40.000 IDR</li>
+          <li onclick="showPayment('VPS High Quality - Ram 8 Core 4', '50.000 IDR')">Ram 8 Core 4 → 50.000 IDR</li>
+          <li onclick="showPayment('VPS High Quality - Ram 16 Core 2', '60.000 IDR')">Ram 16 Core 2 → 60.000 IDR</li>
+          <li onclick="showPayment('VPS High Quality - Ram 16 Core 4', '70.000 IDR')">Ram 16 Core 4 → 70.000 IDR</li>
+          <li onclick="showPayment('VPS High Quality - Ram 16 Core 8', '85.000 IDR')">Ram 16 Core 8 → 85.000 IDR</li>
         </ul>
-        <h3 style="color:#ff00aa; margin:25px 0 15px;">SUPER QUALITY</h3>
+        <h3 style="color:#ff00aa; margin:30px 0 10px;">SUPER QUALITY</h3>
         <ul>
-          <li>Ram 4 Core 2 → 85.000 IDR</li>
-          <li>Ram 8 Core 4 → 90.000 IDR</li>
-          <li>Ram 16 Core 2 → 100.000 IDR</li>
-          <li>Ram 16 Core 4 → 130.000 IDR</li>
-          <li>Ram 16 Core 8 → 150.000 IDR</li>
+          <li onclick="showPayment('VPS Super Quality - Ram 4 Core 2', '85.000 IDR')">Ram 4 Core 2 → 85.000 IDR</li>
+          <li onclick="showPayment('VPS Super Quality - Ram 8 Core 4', '90.000 IDR')">Ram 8 Core 4 → 90.000 IDR</li>
+          <li onclick="showPayment('VPS Super Quality - Ram 16 Core 2', '100.000 IDR')">Ram 16 Core 2 → 100.000 IDR</li>
+          <li onclick="showPayment('VPS Super Quality - Ram 16 Core 4', '130.000 IDR')">Ram 16 Core 4 → 130.000 IDR</li>
+          <li onclick="showPayment('VPS Super Quality - Ram 16 Core 8', '150.000 IDR')">Ram 16 Core 8 → 150.000 IDR</li>
         </ul>
       </div>
     </div>
@@ -124,7 +131,9 @@
     <div class="category" onclick="toggle('mic')">
       <h2>[ ON MIC ROBLOX ]</h2>
       <div id="mic" class="products">
-        <ul><li>On Mic 50K</li></ul>
+        <ul>
+          <li onclick="showPayment('On Mic Roblox', '50K')">On Mic 50K</li>
+        </ul>
       </div>
     </div>
 
@@ -132,30 +141,31 @@
       <h2>[ Domain / SubDomain ]</h2>
       <div id="domain" class="products">
         <ul>
-          <li>.biz.id → 15.000 IDR</li>
-          <li>.online → 30.000 IDR</li>
-          <li>.my.id → 45.000 IDR</li>
-          <li>Subdomain → 10K</li>
+          <li onclick="showPayment('Domain .biz.id', '15.000 IDR')">.biz.id → 15.000 IDR</li>
+          <li onclick="showPayment('Domain .online', '30.000 IDR')">.online → 30.000 IDR</li>
+          <li onclick="showPayment('Domain .my.id', '45.000 IDR')">.my.id → 45.000 IDR</li>
+          <li onclick="showPayment('Subdomain', '10K')">Subdomain → 10K</li>
         </ul>
       </div>
     </div>
 
-    <div id="payment" class="payment-section">
+    <div id="payment">
       <h3>Pembayaran via QRIS</h3>
-      <img src="qr.jpg" alt="QRIS Pembayaran"> <!-- Ganti src="qris.jpg" dengan link asli gambar QRIS kamu, misal https://i.imgur.com/xxxxxx.jpg -->
+      <img src="qris.jpg" alt="QRIS Pembayaran"> <!-- GANTI SRC INI DENGAN LINK QRIS ASLI KAMU, contoh: https://i.imgur.com/ABC123.jpg -->
+      <div id="selected-product"></div>
       <div class="payment-info">
-        <p>Kirim bukti transfer + produk yang dipilih ke:</p>
-        <p style="font-size:1.5rem; margin:25px 0;">
+        <p>Kirim bukti transfer ke:</p>
+        <p style="font-size:1.6rem; margin:25px 0;">
           <strong>WA:</strong> <a href="https://wa.me/6285117115381">085117115381</a><br>
           <strong>Tele:</strong> <a href="https://t.me/ApinnSetecuu">@ApinnSetecuu</a>
         </p>
-        <p>Format chat:<br><em>"Produk: [nama produk] - Sudah transfer via QRIS"</em></p>
-        <p>Proses cepat setelah bukti masuk! ⚡</p>
+        <p>Format chat:<br><em>"Produk: [nama di atas] - Harga: [harga di atas] - Sudah transfer via QRIS"</em></p>
+        <p>Konfirmasi cepat, proses langsung! 🔥</p>
       </div>
     </div>
 
     <footer>
-      © 2026 Ryo Shop • Powered by Ryo Yamada
+      © 2026 Ryo Shop • Ryo Yamada 
     </footer>
   </div>
 
@@ -165,12 +175,12 @@
       el.classList.toggle('active');
     }
 
-    function showPayment(productName) {
+    function showPayment(productName, price) {
       const payment = document.getElementById('payment');
+      const selected = document.getElementById('selected-product');
+      selected.innerHTML = `Produk: ${productName}<br>Harga: ${price}`;
       payment.classList.add('active');
       payment.scrollIntoView({ behavior: 'smooth' });
-      // Optional: bisa tambah alert atau tampilkan nama produk di payment section
-       alert('Pilih: ' + productName + '\nSilakan scan QRIS di atas & kirim bukti!');
     }
   </script>
 
