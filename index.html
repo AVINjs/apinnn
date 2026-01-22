@@ -3,152 +3,106 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Ryo Shol - Jualan Keren & Jangih</title>
+  <title>Ryo Shop - Jualan Keren & Jangih</title>
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&family=Roboto+Mono:wght@400;700&display=swap');
 
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
+    * { margin:0; padding:0; box-sizing:border-box; }
     body {
       font-family: 'Roboto Mono', monospace;
-      background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.8)), url('https://images8.alphacoders.com/129/1296002.jpg') no-repeat center center fixed;
+      background: linear-gradient(rgba(0,0,0,0.75), rgba(0,0,0,0.85)), url('https://images6.alphacoders.com/129/1299664.jpg') no-repeat center center fixed;
       background-size: cover;
       color: #e0e0e0;
       min-height: 100vh;
       padding: 20px;
     }
-
-    header {
-      text-align: center;
-      margin-bottom: 40px;
-      text-shadow: 0 0 10px #00ffea;
-    }
-
+    header { text-align:center; margin-bottom:40px; text-shadow:0 0 10px #00ffea; }
     h1 {
       font-family: 'Orbitron', sans-serif;
-      font-size: 3.5rem;
+      font-size: 3.8rem;
       color: #00ffea;
-      letter-spacing: 5px;
-      animation: glow 2s infinite alternate;
+      letter-spacing: 6px;
+      animation: glow 2.5s infinite alternate;
     }
-
     @keyframes glow {
-      from { text-shadow: 0 0 10px #00ffea, 0 0 20px #00ffea; }
-      to { text-shadow: 0 0 20px #ff00aa, 0 0 30px #ff00aa; }
+      from { text-shadow: 0 0 10px #00ffea, 0 0 25px #00ffea; }
+      to { text-shadow: 0 0 25px #ff00aa, 0 0 40px #ff00aa; }
     }
-
-    .container {
-      max-width: 900px;
-      margin: 0 auto;
-    }
-
+    .container { max-width: 950px; margin:0 auto; }
     .category {
-      background: rgba(20, 20, 40, 0.8);
+      background: rgba(20,20,40,0.8);
       border: 2px solid #00ffea;
       border-radius: 12px;
-      margin: 20px 0;
-      padding: 15px;
-      cursor: pointer;
-      transition: all 0.4s;
-      box-shadow: 0 0 15px rgba(0, 255, 234, 0.3);
+      margin:20px 0;
+      padding:15px;
+      cursor:pointer;
+      transition:all 0.4s;
+      box-shadow:0 0 15px rgba(0,255,234,0.4);
     }
-
-    .category:hover {
-      transform: scale(1.03);
-      box-shadow: 0 0 30px rgba(0, 255, 234, 0.6);
+    .category:hover { transform:scale(1.03); box-shadow:0 0 35px rgba(0,255,234,0.7); }
+    .category h2 { color:#00ffea; font-size:1.9rem; }
+    .products, .payment-section {
+      display:none;
+      margin-top:15px;
+      padding:20px;
+      background:rgba(10,10,25,0.9);
+      border-radius:10px;
+      border:1px solid #444;
     }
-
-    .category h2 {
-      color: #00ffea;
-      font-size: 1.8rem;
-    }
-
-    .products {
-      display: none;
-      margin-top: 15px;
-      padding: 15px;
-      background: rgba(10, 10, 20, 0.9);
-      border-radius: 10px;
-      border: 1px solid #444;
-    }
-
-    .products.active {
-      display: block;
-    }
-
-    ul {
-      list-style: none;
-    }
-
+    .products.active, .payment-section.active { display:block; }
+    ul { list-style:none; }
     li {
-      margin: 12px 0;
-      font-size: 1.1rem;
-      padding: 10px;
-      background: rgba(0, 255, 234, 0.1);
-      border-radius: 8px;
-      border-left: 5px solid #00ffea;
+      margin:12px 0;
+      font-size:1.15rem;
+      padding:12px;
+      background:rgba(0,255,234,0.08);
+      border-radius:8px;
+      border-left:6px solid #00ffea;
+      cursor:pointer;
+      transition:0.3s;
     }
-
-    .payment-info {
-      margin-top: 50px;
-      padding: 25px;
-      background: rgba(30, 30, 50, 0.8);
-      border-radius: 15px;
-      border: 2px dashed #ff00aa;
-      text-align: center;
+    li:hover { background:rgba(0,255,234,0.15); }
+    .payment-section {
+      text-align:center;
+      border:2px dashed #ff00aa;
     }
-
-    .payment-info h3 {
-      color: #ff00aa;
-      margin-bottom: 15px;
+    .payment-section img {
+      max-width:280px;
+      margin:20px auto;
+      display:block;
+      border-radius:12px;
+      box-shadow:0 0 20px rgba(255,0,170,0.5);
     }
-
-    a {
-      color: #00ffea;
-      text-decoration: none;
-      font-weight: bold;
-    }
-
-    a:hover {
-      color: #ff00aa;
-    }
-
-    footer {
-      text-align: center;
-      margin-top: 60px;
-      color: #888;
-      font-size: 0.9rem;
-    }
+    .payment-info h3 { color:#ff00aa; margin-bottom:15px; font-size:1.6rem; }
+    a { color:#00ffea; text-decoration:none; font-weight:bold; }
+    a:hover { color:#ff00aa; }
+    footer { text-align:center; margin-top:60px; color:#888; font-size:0.95rem; }
   </style>
 </head>
 <body>
 
   <div class="container">
     <header>
-      <h1>RYO SHOL</h1>
-      <p style="font-size: 1.3rem; color: #aaa;">Jualan Keren & Jangih - Powered by Ryo Yamada Vibes</p>
+      <h1>RYO SHOP</h1>
+      <p style="font-size:1.4rem; color:#aaa;">Jualan Keren & Jangih - Ryo Yamada Vibes Only</p>
     </header>
 
-    <div class="category" onclick="toggleProducts('nokos')">
+    <div class="category" onclick="toggle('nokos')">
       <h2>[ NOKOS ]</h2>
       <div id="nokos" class="products">
         <ul>
-          <li>INDONESIA</li>
-          <li>ARAB</li>
-          <li>US</li>
-          <li>THAILAND</li>
+          <li onclick="showPayment('Indonesia Nokos - 10K')">INDONESIA → 10K</li>
+          <li onclick="showPayment('Arab Nokos - 20K')">ARAB → 20K</li>
+          <li onclick="showPayment('US Nokos - 35K')">US → 35K</li>
+          <li onclick="showPayment('Thailand Nokos - 40K')">THAILAND → 40K</li>
         </ul>
       </div>
     </div>
 
-    <div class="category" onclick="toggleProducts('vps')">
+    <div class="category" onclick="toggle('vps')">
       <h2>[ VPS DO ]</h2>
       <div id="vps" class="products">
-        <h3 style="color: #ffcc00; margin: 15px 0;">HIGH QUALITY</h3>
+        <h3 style="color:#ffcc00; margin:15px 0;">HIGH QUALITY</h3>
         <ul>
           <li>Ram 4 Core 2 → 40.000 IDR</li>
           <li>Ram 8 Core 4 → 50.000 IDR</li>
@@ -156,7 +110,7 @@
           <li>Ram 16 Core 4 → 70.000 IDR</li>
           <li>Ram 16 Core 8 → 85.000 IDR</li>
         </ul>
-        <h3 style="color: #ff00aa; margin: 20px 0 15px;">SUPER QUALITY</h3>
+        <h3 style="color:#ff00aa; margin:25px 0 15px;">SUPER QUALITY</h3>
         <ul>
           <li>Ram 4 Core 2 → 85.000 IDR</li>
           <li>Ram 8 Core 4 → 90.000 IDR</li>
@@ -167,16 +121,14 @@
       </div>
     </div>
 
-    <div class="category" onclick="toggleProducts('mic')">
+    <div class="category" onclick="toggle('mic')">
       <h2>[ ON MIC ROBLOX ]</h2>
       <div id="mic" class="products">
-        <ul>
-          <li>On Mic 50K</li>
-        </ul>
+        <ul><li>On Mic 50K</li></ul>
       </div>
     </div>
 
-    <div class="category" onclick="toggleProducts('domain')">
+    <div class="category" onclick="toggle('domain')">
       <h2>[ Domain / SubDomain ]</h2>
       <div id="domain" class="products">
         <ul>
@@ -188,26 +140,37 @@
       </div>
     </div>
 
-    <div class="payment-info">
-      <h3>Cara Pembayaran</h3>
-      <p>Kirim pembayaran via <strong>QRIS</strong> atau transfer, lalu kirim bukti + produk yang dipilih ke:</p>
-      <p style="font-size: 1.4rem; margin: 20px 0;">
-        <strong>WA:</strong> <a href="https://wa.me/6285117115381">085117115381</a> (langsung chat ya!)<br>
-        <strong>Tele:</strong> <a href="https://t.me/ApinnSetecuu">@ApinnSetecuu</a>
-      </p>
-      <p>Kirim format: <br><em>"Produk: [nama produk] - Bukti transfer"</em></p>
-      <p>Fast response & proses cepat! 🚀</p>
+    <div id="payment" class="payment-section">
+      <h3>Pembayaran via QRIS</h3>
+      <img src="qris.jpg" alt="QRIS Pembayaran"> <!-- Ganti src="qris.jpg" dengan link asli gambar QRIS kamu, misal https://i.imgur.com/xxxxxx.jpg -->
+      <div class="payment-info">
+        <p>Kirim bukti transfer + produk yang dipilih ke:</p>
+        <p style="font-size:1.5rem; margin:25px 0;">
+          <strong>WA:</strong> <a href="https://wa.me/6285117115381">085117115381</a><br>
+          <strong>Tele:</strong> <a href="https://t.me/ApinnSetecuu">@ApinnSetecuu</a>
+        </p>
+        <p>Format chat:<br><em>"Produk: [nama produk] - Sudah transfer via QRIS"</em></p>
+        <p>Proses cepat setelah bukti masuk! ⚡</p>
+      </div>
     </div>
 
     <footer>
-      © 2026 Ryo Shol - Stay Cool & Jangih
+      © 2026 Ryo Shop • Powered by Ryo Yamada Aesthetic
     </footer>
   </div>
 
   <script>
-    function toggleProducts(id) {
+    function toggle(id) {
       const el = document.getElementById(id);
       el.classList.toggle('active');
+    }
+
+    function showPayment(productName) {
+      const payment = document.getElementById('payment');
+      payment.classList.add('active');
+      payment.scrollIntoView({ behavior: 'smooth' });
+      // Optional: bisa tambah alert atau tampilkan nama produk di payment section
+      // alert('Pilih: ' + productName + '\nSilakan scan QRIS di atas & kirim bukti!');
     }
   </script>
 
